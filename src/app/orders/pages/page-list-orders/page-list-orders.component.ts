@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Order } from 'src/app/shared/models/order.model';
 import { OrdersService } from '../../services/orders.service';
 
 @Component({
@@ -9,6 +10,8 @@ import { OrdersService } from '../../services/orders.service';
 export class PageListOrdersComponent implements OnInit {
 
   public headers: string[];
+  public orderCollection: Order[];
+
   constructor(private ordersClient:OrdersService) {
 
    }
@@ -16,7 +19,7 @@ export class PageListOrdersComponent implements OnInit {
   ngOnInit(): void {
     this.ordersClient.collection.subscribe(
       (data) => {
-        console.log(data)
+        this.orderCollection = data;
       },
       (error) => {
         console.log(`order client get in error ${error}`)
