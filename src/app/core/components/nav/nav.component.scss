@@ -1,3 +1,10 @@
+@import "themes";
+
 .nav-link {
   text-decoration: inherit;
+  color: inherit;
+}
+
+.active {
+  color: $color3
 }

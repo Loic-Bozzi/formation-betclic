@@ -7,18 +7,20 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UiModule } from './ui/ui.module';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
+    HttpClientModule,
     NgbModule,
     FontAwesomeModule,
     UiModule,
-    CoreModule
+    CoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
