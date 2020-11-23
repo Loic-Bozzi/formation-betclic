@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StateOrder } from 'src/app/shared/enums/state-order.enum';
 import { Client } from 'src/app/shared/models/client.model';
 import { ClientsService } from '../../services/clients.service';
 
