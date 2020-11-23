@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.title = "Betclic Clebs Gang"
+    this.title = "Betclic Trading Portal"
   }
 
 }
