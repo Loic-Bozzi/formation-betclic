@@ -16,25 +16,27 @@ export class PageEditOrdersComponent implements OnInit {
   public title: string;
   public subtitle: string;
   public order$: Observable<Order>;
-  @ViewChild('updateOrderModal') public updateModalRef: TemplateRef<any>;
+
+  @ViewChild('updateOrderModal') public updateOrderModalRef: TemplateRef<any>;
+
   public modalValues: Order;
   private currentActiveModal: NgbModalRef;
 
   constructor(
-    private currentRoute: ActivatedRoute,
-    private orderClient: OrdersService,
     private router: Router,
-    private modalService: NgbModal
+    private activatedRoute: ActivatedRoute,
+    private ordersService: OrdersService,
+    private modalService: NgbModal,
   ) { }
 
   ngOnInit(): void {
-    this.order$ = this.currentRoute.paramMap.pipe(
-      switchMap((params: ParamMap) => {
-        return this.orderClient.getItemById(params.get('id'));
-      })
-    )
+    this.order$ = this.activatedRoute.paramMap
+      .pipe(
+        switchMap((params: ParamMap) =>
+          this.ordersService.getItemById(params.get('id')))
+      );
 
-    this.currentRoute.data.subscribe(
+    this.activatedRoute.data.subscribe(
       (data) => {
         this.title = data.title;
         this.subtitle = data.subtitle;
@@ -42,20 +44,22 @@ export class PageEditOrdersComponent implements OnInit {
     )
   }
 
-  public updateOrder(item: Order) {
-      this.orderClient.updateItem(item).subscribe(
-      (result) => {
-      this.dismissModal();
-      this.router.navigate(['orders']);
-    });
+  public updateOrder(order: Order) {
+    this.ordersService.updateItem(order).subscribe(
+      (order) => {
+        this.dismissUpdateModal();
+        this.router.navigate(['orders']);
+      }
+    )
   }
 
   public openUpdateModal(values) {
+    console.log("OpenModal");
     this.modalValues = values;
-    this.currentActiveModal = this.modalService.open(this.updateModalRef);
+    this.currentActiveModal = this.modalService.open(this.updateOrderModalRef);
   }
 
-  public dismissModal() {
+  public dismissUpdateModal() {
     this.currentActiveModal.dismiss();
   }
 

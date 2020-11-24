@@ -11,30 +11,30 @@ import { Order } from 'src/app/shared/models/order.model';
 export class FormOrdersComponent implements OnInit {
 
   @Input() public order: Order = new Order();
-  public formGroup: FormGroup;
+
+  @Output() public submitted: EventEmitter<Order> = new EventEmitter();
+
+  public form: FormGroup;
+
   public states = Object.values(StateOrder);
-  @Output() public submitted: EventEmitter<any> = new EventEmitter();
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private fb: FormBuilder) { }
 
-  /* Find all validators on: https://angular.io/api/forms/Validators */
   ngOnInit(): void {
-    this.formGroup = this.formBuilder.group({
-      tjmHt: [this.order.tjmHt],
+    this.form = this.fb.group({
+      tjmHt: [this.order.tjmHt, Validators.min(0)],
       nbJours: [this.order.nbJours],
       tva: [this.order.tva],
       state: [this.order.state],
       typePresta: [this.order.typePresta, Validators.minLength(2)],
-      comment: [this.order.comment, Validators.compose([Validators.required, Validators.minLength(3)])],
       client: [this.order.client, Validators.required],
-      id: [this.order.id]
+      comment: [this.order.comment, Validators.compose([Validators.minLength(3), Validators.required, Validators.email])],
+      id: [this.order.id],
     });
   }
 
-  /**
-   * OnSubmit form
-   */
-  public onSubmit() {
-    this.submitted.emit(this.formGroup.value);
+  public submitForm() {
+    this.submitted.emit(this.form.value);
   }
+
 }

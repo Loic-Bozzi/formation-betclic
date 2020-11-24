@@ -1,48 +1,56 @@
 <div class="container">
-  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form" (ngSubmit)="submitForm()">
     <div class="form-group">
-      <label for="typePresta">Type :</label>
-      <input formControlName="typePresta" type="text" class="form-control" id="typePresta">
-      <div class="alert alert-danger" *ngIf="formGroup.get('typePresta').errors?.required && formGroup.get('typePresta').touched">required field</div>
+      <label for="type">Type :</label>
+      <input formControlName="typePresta" type="text" class="form-control" id="type" />
+      <div class="alert alert-danger" *ngIf="form.get('typePresta').invalid && form.get('typePresta').touched">
+        Champ invalide
+      </div>
     </div>
 
     <div class="form-group">
-      <label for="client">Client :</label>
-      <input formControlName="client" type="text" class="form-control" id="client">
-      <div class="alert alert-danger" *ngIf="formGroup.get('client').errors?.required && formGroup.get('client').touched">required field</div>
+      <label for="type">TJM HT :</label>
+      <input formControlName="tjmHt" type="number" class="form-control" id="tjmHt" />
+      <div class="alert alert-danger" *ngIf="form.get('tjmHt').invalid && form.get('tjmHt').touched">
+        Ne peut pas être inférieur à 0
+      </div>
     </div>
 
     <div class="form-group">
-      <label for="nbJours">Nb. jours :</label>
-      <input formControlName="nbJours" type="text" class="form-control" id="nbJours">
+      <label for="type">Nb Jours :</label>
+      <input formControlName="nbJours" type="number" class="form-control" id="nbJours" />
     </div>
 
     <div class="form-group">
-      <label for="tjmHt">Tjm HT :</label>
-      <input formControlName="tjmHt" type="text" class="form-control" id="tjmHt">
+      <label for="type">TVA :</label>
+      <input formControlName="tva" type="text" class="form-control" id="tva" />
     </div>
 
     <div class="form-group">
-      <label for="tva">TVA :</label>
-      <input formControlName="tva" type="text" class="form-control" id="tva">
-    </div>
-
-    <div class="form-group">
-      <label for="comment">Commentaire :</label>
-      <input formControlName="comment" type="text" class="form-control" id="comment">
-      <!--<div class="alert alert-danger" *ngIf="formGroup.get('comment').errors?.required && formGroup.get('comment').touched">required field</div>
-      <div class="alert alert-danger" *ngIf="formGroup.get('comment').errors?.minlength && formGroup.get('comment').touched">3 char min</div>-->
-
-    </div>
-
-    <div class="form-group">
-      <label for="state">State :</label>
-      <select formControlName="state" id="state" class="form-control">
-        <option *ngFor="let state of states" [ngValue]="state">{{state}}</option>
+      <label for="type">State :</label>
+      <select formControlName="state" class="form-control" id="state">
+        <option *ngFor="let s of states" [ngValue]="s">{{ s }}</option>
       </select>
     </div>
 
+    <div class="form-group">
+      <label for="type">Client :</label>
+      <input formControlName="client" type="text" class="form-control" id="client" />
+      <div class="alert alert-danger" *ngIf="form.get('client').invalid && form.get('client').touched">
+        Champ invalide
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="type">Comment :</label>
+      <input formControlName="comment" type="text" class="form-control" id="comment" />
+      <!--<div invalidMessage="comment">
+              <p *invalidType="'required'">Champs requis.</p>
+              <p *invalidType="'email'">Email.</p>
+              <p *invalidType="'minlength'">Taille minimale requise (3).</p>
+            </div>-->
+    </div>
     <app-btn route="/orders" label="Back"></app-btn>
-    <app-btn typeButton="submit" [disabled]="formGroup.invalid" label="Submit order"></app-btn>
+    <app-btn typeButton="submit" label="Submit"></app-btn>
   </form>
 </div>

@@ -55,6 +55,7 @@ export class ClientsService {
     return this.http.get<Client>(`${this.urlApi}clients/${id}`);
   }
 
+
   // public deleteItem(item: Order): Observable<Order> {
   //   return this.http.delete<Order>(`${this.urlApi}orders/${item.id}`);
   // }

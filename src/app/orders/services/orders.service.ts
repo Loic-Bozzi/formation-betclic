@@ -48,6 +48,12 @@ export class OrdersService {
     return this.updateItem(obj);
   }
 
+  public changeClient(item: Order, client: string): Observable<Order> {
+    const obj = new Order({...item});
+    obj.client = client;
+    return this.updateItem(obj);
+  }
+
   public updateItem(item: Order): Observable<Order> {
     return this.http.put<Order>(`${this.urlApi}orders/${item.id}`, item);
   }
@@ -62,5 +68,9 @@ export class OrdersService {
 
   public getItemById(id: string): Observable<Order> {
     return this.http.get<Order>(`${this.urlApi}orders/${id}`);
+  }
+
+  public getItemByClientName(name: string): Observable<Order> {
+    return this.http.get<Order>(`${this.urlApi}orders?client=${name}`);
   }
 }

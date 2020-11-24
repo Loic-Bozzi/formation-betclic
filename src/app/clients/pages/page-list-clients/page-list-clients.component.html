@@ -1,6 +1,6 @@
 <app-template-a title="Clients" subtitle="Listing">
 
-  <app-table-light *ngIf="clientCollection$ | async as clientCollection" [headers]="headers">
+  <app-table-dark *ngIf="clientCollection$ | async as clientCollection" [headers]="headers">
     <tr *ngFor="let item of clientCollection">
       <td>{{ item.id }}</td>
       <td>{{ item.name }}</td>
@@ -12,7 +12,7 @@
         <app-icon-delete (click)="deleteClient(item)"></app-icon-delete>
       </td>
     </tr>
-  </app-table-light>
+  </app-table-dark>
 
   <!-- <app-btn href="https://www.google.com" label="Go to google"></app-btn>-->
   <app-btn route="add" label="Add Client"></app-btn>

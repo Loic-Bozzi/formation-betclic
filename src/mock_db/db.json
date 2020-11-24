@@ -3,10 +3,10 @@
     {
       "tjmHt": 500,
       "nbJours": 1,
-      "tva": 20,
+      "tva": "2000",
       "state": "OPTION",
       "typePresta": "Formation",
-      "client": "Christophe2",
+      "client": "Lolokre",
       "comment": "test",
       "id": 3
     },
@@ -21,13 +21,13 @@
       "id": 4
     },
     {
-      "tjmHt": 500,
+      "tjmHt": 5000,
       "nbJours": 1,
       "tva": 20,
       "state": "CANCEL",
       "typePresta": "Test",
+      "client": "Lolokre",
       "comment": "tttttttttttttttttttt",
-      "client": "ttt",
       "id": 5
     }
   ],
@@ -55,13 +55,13 @@
     {
       "id": 3,
       "state": "InProgress",
-      "name": "Test Veladokre",
-      "ca": "10",
+      "name": "Baptiste Velado",
+      "ca": "1000",
       "comment": "testtest"
     },
     {
       "id": 4,
-      "state": "VIP",
+      "state": "VIPPI",
       "name": "Lolokre",
       "ca": "100000000",
       "comment": "On track"

@@ -2,7 +2,9 @@ import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { ClientsService } from 'src/app/clients/services/clients.service';
 import { StateOrder } from 'src/app/shared/enums/state-order.enum';
+import { Client } from 'src/app/shared/models/client.model';
 import { Order } from 'src/app/shared/models/order.model';
 import { OrdersService } from '../../services/orders.service';
 
@@ -19,8 +21,11 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
   public states = Object.values(StateOrder);
   public orderCollection$: Observable<Order[]>;
   public destroy$: Subject<any> = new Subject();
+  public clientCollection: Client[];
+  public clientCollection$: Observable<Client[]>;
 
   constructor(private ordersClient:OrdersService,
+    private clientService: ClientsService,
     private router:Router) {
 
    }
@@ -40,6 +45,13 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
     // );
     this.ordersClient.resfresh$.next(true);
     this.orderCollection$ = this.ordersClient.collection;
+    this.clientService.resfresh$.next(true);
+    this.clientCollection$ = this.clientService.collection;
+    this.clientCollection$.subscribe(
+      (data) => {
+        this.clientCollection = data;
+      }
+    )
     this.headers = [
       "Type",
       "Client",
@@ -62,6 +74,16 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
     )
   }
 
+  public changeClient(item:Order, event: any) {
+    this.ordersClient.changeClient(item, event.target.value)
+    .pipe(takeUntil(this.destroy$))
+    .subscribe(
+      (result) => {
+        item.client = result.client;
+      }
+    )
+  }
+
   public deleteOrder(item: Order) {
     this.ordersClient.deleteItem(item)
     .pipe(takeUntil(this.destroy$))
@@ -77,6 +99,10 @@ export class PageListOrdersComponent implements OnInit, OnDestroy {
   }
 
   public AddOrder() {
+  }
+
+  public getOrderByClientName(name: string) {
+    //this.ordersClient.getItemByClientName();
   }
 
 }

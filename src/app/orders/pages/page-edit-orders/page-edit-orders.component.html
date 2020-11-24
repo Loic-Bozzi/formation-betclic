@@ -1,14 +1,13 @@
 <app-template-a [title]="title" [subtitle]="subtitle">
-  <app-form-orders *ngIf="order$ | async as order" [order]="order" (click)="openUpdateModal($event)"></app-form-orders>
+  <app-form-orders *ngIf="order$ | async as order" [order]="order" (submitted)="openUpdateModal($event)">
+  </app-form-orders>
 </app-template-a>
 
 <ng-template #updateOrderModal let-modal>
-  <app-modal (dismissed)="dismissModal()">
-    <div class="modal-body">
-      Are you sure ?
-    </div>
+  <app-modal (dismissed)="dismissUpdateModal()">
+    <div class="modal-body">Are you sure you want to edit?</div>
     <div class="modal-footer">
-      <app-btn [action]="true" (clicked)="updateOrder(modalValues)" label="save"></app-btn>
+      <app-btn [action]="true" (clicked)="updateOrder(modalValues)" label="Confirm"></app-btn>
     </div>
   </app-modal>
 </ng-template>
