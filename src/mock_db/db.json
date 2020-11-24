@@ -19,6 +19,16 @@
       "comment": "Your personal slave",
       "client": "Baptiste Velado",
       "id": 4
+    },
+    {
+      "tjmHt": 500,
+      "nbJours": 1,
+      "tva": 20,
+      "state": "CANCEL",
+      "typePresta": "Test",
+      "comment": "tttttttttttttttttttt",
+      "client": "ttt",
+      "id": 5
     }
   ],
   "orders2": [
@@ -34,15 +44,6 @@
     }
   ],
   "clients": [
-    {
-      "name": "Christophe2",
-      "state": "Active",
-      "tva": 20,
-      "id": 1,
-      "ca": 12000,
-      "comment": "un comment pour client christophe2",
-      "phoneNumber": "06 27 23 29 94"
-    },
     {
       "name": "Modis",
       "state": "Inactive",

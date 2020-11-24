@@ -1,0 +1,3 @@
+<app-template-a [title]="title" [subtitle]="subtitle">
+  <app-form-clients *ngIf="client$ | async as client" [client]="client" (click)="updateClient($event)"></app-form-clients>
+</app-template-a>

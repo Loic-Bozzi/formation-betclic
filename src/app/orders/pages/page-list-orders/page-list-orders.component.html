@@ -12,10 +12,14 @@
           <option *ngFor="let state of states" [value]="state" [selected]="state === item.state">{{ state }}</option>
         </select>
       </td>
+      <td>
+        <app-icon-update (click)="gotoEdit(item)"></app-icon-update>
+        <app-icon-delete (click)="deleteOrder(item)"></app-icon-delete>
+      </td>
     </tr>
   </app-table-light>
 
-  <app-btn href="https://www.google.com" label="Go to google"></app-btn>
+  <!--<app-btn href="https://www.google.com" label="Go to google"></app-btn>-->
   <app-btn route="add" label="Add order"></app-btn>
   <app-btn [action]="true" label="Do something" (clicked)="AddOrder()"></app-btn>
 </app-template-a>
@@ -34,10 +38,14 @@
           <option *ngFor="let state of states" [value]="state" [selected]="state === item.state">{{ state }}</option>
         </select>
       </td>
+      <td>
+        <app-icon-update (click)="gotoEdit(item)"></app-icon-update>
+        <app-icon-delete (click)="deleteOrder(item)"></app-icon-delete>
+      </td>
     </tr>
   </app-table-light>
 
-  <app-btn href="https://www.google.com" label="Go to google"></app-btn>
+  <!--<app-btn href="https://www.google.com" label="Go to google"></app-btn>-->
   <app-btn route="add" label="Add order"></app-btn>
   <app-btn [action]="true" label="Do something" (clicked)="AddOrder()"></app-btn>
 </app-template-b>

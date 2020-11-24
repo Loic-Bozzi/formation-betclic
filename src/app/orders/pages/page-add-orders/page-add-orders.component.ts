@@ -6,7 +6,7 @@ import { OrdersService } from '../../services/orders.service';
 @Component({
   selector: 'app-page-add-orders',
   templateUrl: './page-add-orders.component.html',
-  styleUrls: ['./page-add-orders.component.css']
+  styleUrls: ['./page-add-orders.component.scss']
 })
 export class PageAddOrdersComponent implements OnInit {
 
@@ -20,8 +20,8 @@ export class PageAddOrdersComponent implements OnInit {
   public add(item: Order) {
     this.orderService.addItem(item).subscribe(
       (res) => {
-                //this.router.navigate(["orders"]);
-                this.router.navigate(["../"], {relativeTo: this.currentRouter})
+        //this.router.navigate(["orders"]);
+        this.router.navigate(["../"], {relativeTo: this.currentRouter})
       }
     )
   }

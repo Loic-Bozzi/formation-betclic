@@ -1,16 +1,20 @@
 <app-template-a title="Clients" subtitle="Listing">
 
-  <app-table-light *ngIf="clientCollection" [headers]="headers">
+  <app-table-light *ngIf="clientCollection$ | async as clientCollection" [headers]="headers">
     <tr *ngFor="let item of clientCollection">
       <td>{{ item.id }}</td>
       <td>{{ item.name }}</td>
       <td>{{ item.state }}</td>
       <td>{{ item.ca | currency: 'EUR'}}</td>
       <td>{{ item.comment }}</td>
+      <td>
+        <app-icon-update (click)="gotoEdit(item)"></app-icon-update>
+        <app-icon-delete (click)="deleteClient(item)"></app-icon-delete>
+      </td>
     </tr>
   </app-table-light>
 
-  <app-btn href="https://www.google.com" label="Go to google"></app-btn>
+  <!-- <app-btn href="https://www.google.com" label="Go to google"></app-btn>-->
   <app-btn route="add" label="Add Client"></app-btn>
   <app-btn [action]="true" label="Do something" (clicked)="AddClient()"></app-btn>
 
@@ -18,17 +22,21 @@
 
 <app-template-b title="Clients" subtitle="Listing">
 
-  <app-table-light *ngIf="clientCollection" [headers]="headers">
+  <app-table-light *ngIf="clientCollection$ | async as clientCollection" [headers]="headers">
     <tr *ngFor="let item of clientCollection">
       <td>{{ item.id }}</td>
       <td>{{ item.name }}</td>
       <td>{{ item.state }}</td>
       <td>{{ item.ca | currency: 'EUR'}}</td>
       <td>{{ item.comment }}</td>
+      <td>
+        <app-icon-update (click)="gotoEdit(item)"></app-icon-update>
+        <app-icon-delete (click)="deleteClient(item)"></app-icon-delete>
+      </td>
     </tr>
   </app-table-light>
 
-  <app-btn href="https://www.google.com" label="Go to google"></app-btn>
+  <!--<app-btn href="https://www.google.com" label="Go to google"></app-btn>-->
   <app-btn route="add" label="Add Client"></app-btn>
   <app-btn [action]="true" label="Do something" (clicked)="AddClient()"></app-btn>
 

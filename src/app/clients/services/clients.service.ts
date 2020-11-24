@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Client } from 'src/app/shared/models/client.model'
 import { environment } from 'src/environments/environment';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +11,32 @@ import { environment } from 'src/environments/environment';
 export class ClientsService {
 
   constructor(private http: HttpClient) {
-    this.pCollection = this.http.get<Client[]>(`${this.urlApi}clients`);
+    this.resfresh$.subscribe(
+      (refreshing) => {
+        if(refreshing == true)
+        {
+          this.http.get<Client[]>(`${this.urlApi}clients`).pipe(
+            map((collection) => {
+              return collection.map((obj) => {
+                return new Client(obj);
+              })
+            })
+          ).subscribe(
+            (data) => {
+              this.pCollection.next(data);
+            }
+          );
+        }
+      }
+    )
   }
 
-  private pCollection: Observable<Client[]>;
+  private pCollection: BehaviorSubject<Client[]> = new BehaviorSubject<Client[]>([]);
   private urlApi = environment.urlApi;
+  public resfresh$: Subject<boolean> = new Subject();
 
   get collection(): Observable<Client[]> {
-    return this.pCollection;
+    return this.pCollection.asObservable();
   }
 
   public updateItem(item: Client): Observable<Client> {
@@ -27,4 +46,16 @@ export class ClientsService {
   public addItem(item: Client): Observable<Client> {
         return this.http.post<Client>(`${this.urlApi}clients`, item);
   }
+
+  public deleteItem(item: Client): Observable<Client> {
+    return this.http.delete<Client>(`${this.urlApi}clients/${item.id}`);
+  }
+
+  public getItemById(id: string): Observable<Client> {
+    return this.http.get<Client>(`${this.urlApi}clients/${id}`);
+  }
+
+  // public deleteItem(item: Order): Observable<Order> {
+  //   return this.http.delete<Order>(`${this.urlApi}orders/${item.id}`);
+  // }
 }

@@ -9,16 +9,19 @@ import { TemplatesModule } from '../templates/templates.module';
 import { PageAddClientsComponent } from './pages/page-add-clients/page-add-clients.component';
 import { FormClientsComponent } from './components/form-clients/form-clients.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { IconsModule } from '../icons/icons.module';
+import { PageEditClientsComponent } from './pages/page-edit-clients/page-edit-clients.component';
 
 
 @NgModule({
-  declarations: [PageListClientsComponent, PageAddClientsComponent, FormClientsComponent],
+  declarations: [PageListClientsComponent, PageAddClientsComponent, FormClientsComponent, PageEditClientsComponent],
   imports: [
     CommonModule,
     ClientsRoutingModule,
     SharedModule,
     TemplatesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    IconsModule
   ]
 })
 export class ClientsModule { }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Client } from 'src/app/shared/models/client.model';
 
@@ -13,7 +13,7 @@ export class FormClientsComponent implements OnInit {
 
   @Output() public submitted: EventEmitter<any> = new EventEmitter();
 
-  public client: Client = new Client();
+  @Input() public client: Client = new Client();
   public formGroup: FormGroup;
   ngOnInit(): void {
     this.formGroup = this.formBuilder.group({
