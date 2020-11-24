@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Console } from 'console';
 import { StateOrder } from 'src/app/shared/enums/state-order.enum';
 import { Order } from 'src/app/shared/models/order.model';
 import { OrdersService } from '../../services/orders.service';
@@ -45,6 +46,10 @@ export class PageListOrdersComponent implements OnInit {
         item.state = result.state;
       }
     )
+  }
+
+  public AddOrder() {
+    console.log("Add order called !!!")
   }
 
 }
