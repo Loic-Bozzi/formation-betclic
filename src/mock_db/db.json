@@ -57,6 +57,13 @@
       "name": "Test Veladokre",
       "ca": "10",
       "comment": "testtest"
+    },
+    {
+      "id": 4,
+      "state": "VIP",
+      "name": "Lolokre",
+      "ca": "100000000",
+      "comment": "On track"
     }
   ]
 }

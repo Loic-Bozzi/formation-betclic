@@ -1,4 +1,5 @@
 import { Component,  OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Client } from 'src/app/shared/models/client.model';
 import { ClientsService } from '../../services/clients.service';
 
@@ -11,7 +12,9 @@ export class PageAddClientsComponent implements OnInit {
 
 
 
-  constructor(private clientService: ClientsService) { }
+  constructor(private clientService: ClientsService,
+    private router: Router,
+    private currentRouter: ActivatedRoute) { }
 
   ngOnInit(): void {
 
@@ -20,7 +23,8 @@ export class PageAddClientsComponent implements OnInit {
   public add(item: Client) {
     this.clientService.addItem(item).subscribe(
       (res) => {
-        console.log(res)
+        //this.router.navigate(["clients"]);
+        this.router.navigate(["../"], {relativeTo: this.currentRouter})
       }
     )
   }
