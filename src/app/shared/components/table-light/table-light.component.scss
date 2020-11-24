@@ -1,16 +1,34 @@
 @import "themes";
 @import "fonts";
 
-.table-light {
-  .state-cancel {
-    background: $color-error;
-  }
+app-template-a {
+  .table-light {
+    .state-cancel {
+      background: $color-error;
+    }
 
-  .state-option {
-    background: $color1;
-  }
+    .state-option {
+      background: $color1;
+    }
 
-  .state-confirm {
-    background: $color-success;
+    .state-confirm {
+      background: $color-success;
+    }
+  }
+}
+
+app-template-b {
+  .table-light {
+    .state-cancel {
+      background: $color-error;
+    }
+
+    .state-option {
+      background: $color2;
+    }
+
+    .state-confirm {
+      background: $color-success;
+    }
   }
 }

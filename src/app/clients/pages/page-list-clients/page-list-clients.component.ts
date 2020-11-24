@@ -32,4 +32,7 @@ export class PageListClientsComponent implements OnInit {
 
   header
 
+  public AddClient() {
+  }
+
 }

@@ -16,3 +16,25 @@ button {
     background: darken($color: $color3, $amount: 10);
   }
 }
+
+:host-context(app-template-a) {
+  a,
+  button {
+    background: $color1;
+    &:hover {
+      text-decoration: none;
+      background: darken($color: $color1, $amount: 10);
+    }
+  }
+}
+
+:host-context(app-template-b) {
+  a,
+  button {
+    background: $color2;
+    &:hover {
+      text-decoration: none;
+      background: darken($color: $color2, $amount: 10);
+    }
+  }
+}

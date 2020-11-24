@@ -4,11 +4,21 @@
       "tjmHt": 500,
       "nbJours": 1,
       "tva": 20,
-      "state": "CANCEL",
+      "state": "OPTION",
       "typePresta": "Formation",
       "client": "Christophe2",
       "comment": "test",
       "id": 3
+    },
+    {
+      "tjmHt": "0",
+      "nbJours": "10000",
+      "tva": "20",
+      "state": "CONFIRM",
+      "typePresta": "Slave",
+      "comment": "Your personal slave",
+      "client": "Baptiste Velado",
+      "id": 4
     }
   ],
   "orders2": [
@@ -40,6 +50,13 @@
       "ca": 120000,
       "comment": "un comment pour client modis",
       "phoneNumber": "06 27 23 29 94"
+    },
+    {
+      "id": 3,
+      "state": "InProgress",
+      "name": "Test Veladokre",
+      "ca": "10",
+      "comment": "testtest"
     }
   ]
 }
