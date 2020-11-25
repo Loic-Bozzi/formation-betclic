@@ -10,6 +10,7 @@
       <td>
         <app-icon-update (click)="gotoEdit(item)"></app-icon-update>
         <app-icon-delete (click)="deleteClient(item)"></app-icon-delete>
+        <app-icon-list routerLink="/clients/recap/{{item.id}}"></app-icon-list>
       </td>
     </tr>
   </app-table-dark>
@@ -32,6 +33,7 @@
       <td>
         <app-icon-update (click)="gotoEdit(item)"></app-icon-update>
         <app-icon-delete (click)="deleteClient(item)"></app-icon-delete>
+        <app-icon-list routerLink="/clients/recap/{{item.id}}"></app-icon-list>
       </td>
     </tr>
   </app-table-light>

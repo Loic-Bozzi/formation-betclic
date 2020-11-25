@@ -11,10 +11,11 @@ import { FormClientsComponent } from './components/form-clients/form-clients.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { IconsModule } from '../icons/icons.module';
 import { PageEditClientsComponent } from './pages/page-edit-clients/page-edit-clients.component';
+import { PageRecapClientsComponent } from './pages/page-recap-clients/page-recap-clients.component';
 
 
 @NgModule({
-  declarations: [PageListClientsComponent, PageAddClientsComponent, FormClientsComponent, PageEditClientsComponent],
+  declarations: [PageListClientsComponent, PageAddClientsComponent, FormClientsComponent, PageEditClientsComponent, PageRecapClientsComponent],
   imports: [
     CommonModule,
     ClientsRoutingModule,
